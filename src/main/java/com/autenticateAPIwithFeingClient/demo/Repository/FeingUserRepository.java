@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface FeingUserRepository {
 
     @GetMapping(value = "/user/login/{email}/password/{senha}")
-    UserDataDTO getUser(@PathVariable("email")String email, @PathVariable("senha")String senha);
+    UserDataDTO getLoginUser(@PathVariable("email")String email, @PathVariable("senha")String senha);
 
     @GetMapping(value = "/users-list")
     List<UserDataDTO> getAllUsers();

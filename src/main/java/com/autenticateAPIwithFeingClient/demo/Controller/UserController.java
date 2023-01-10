@@ -17,7 +17,7 @@ public class UserController {
     @GetMapping
     @RequestMapping("/userLogin/email/{email}/password/{senha}")
     public UserDataDTO getUser(@PathVariable("email")String email, @PathVariable("senha")String senha){
-        return userService.getUser(email, senha);
+        return userService.getLoginUser(email, senha);
     }
     @GetMapping
     @RequestMapping("/userlist")

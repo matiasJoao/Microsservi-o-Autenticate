@@ -1,18 +1,15 @@
-package com.autenticateAPIwithFeingClient.demo.DTO;
+package com.autenticateAPIwithFeingClient.demo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class UserDataDTO {
-    private String name;
+public class UserEntity {
     private String email;
     private String senha;
-    private Object depart;
 
+    private Object depart;
 }
