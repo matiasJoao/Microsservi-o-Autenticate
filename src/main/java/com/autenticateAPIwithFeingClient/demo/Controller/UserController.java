@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserController {
     @Autowired
@@ -17,10 +19,17 @@ public class UserController {
     public UserDataDTO getUser(@PathVariable("email")String email, @PathVariable("senha")String senha){
         return userService.getUser(email, senha);
     }
+    @GetMapping
+    @RequestMapping("/userlist")
+    public List<UserDataDTO> getAllUsers(){
+        return userService.getAllUsers();
+    }
 
     @PostMapping
     @RequestMapping("/userCadastro")
     public ResponseEntity postUser(@RequestBody UserPostDTO userPostDTO){
         return userService.postUSer(userPostDTO);
     }
+
+
 }

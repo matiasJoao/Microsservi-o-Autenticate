@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -24,5 +26,8 @@ public class UserService {
         feingUserRepository.postUser(userPostDTO);
         UserResponseEntityDTO userResponseEntityDTO = new UserResponseEntityDTO("200","Usuario Cadastrado", HttpStatus.OK);
         return  ResponseEntity.status(HttpStatus.OK).body(userResponseEntityDTO);
+    }
+    public List<UserDataDTO> getAllUsers(){
+        return feingUserRepository.getAllUsers();
     }
 }
