@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class UserEntity {
     private String email;
     private String senha;
-
     private Object depart;
 }

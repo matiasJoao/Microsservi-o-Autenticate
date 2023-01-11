@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class LoginResource {
+/* public class LoginResource {
 
     private final SecretKey CHAVE = Keys.hmacShaKeyFor(
             "7f-j&CKk=coNzZc0y7_4obMP?#TfcYq%fcD0mDpenW2nc!lfGoZ|d?f&RNbDHUX6"
@@ -25,7 +25,7 @@ public class LoginResource {
 
     public ResponseEntity response(UserEntity userEntity){
 
-        try {
+         try {
             if (userEntity.getDepart().equals("Cliente")) {
                 String jwToken = Jwts.builder()
                         .setSubject(userEntity.getEmail())
@@ -47,7 +47,12 @@ public class LoginResource {
 
         )
 
+
+
     }
 
 
 }
+
+
+ */
