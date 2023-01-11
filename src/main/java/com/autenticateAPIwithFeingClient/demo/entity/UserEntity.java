@@ -1,4 +1,4 @@
-package com.autenticateAPIwithFeingClient.demo;
+package com.autenticateAPIwithFeingClient.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

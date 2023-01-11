@@ -3,6 +3,7 @@ package com.autenticateAPIwithFeingClient.demo.Repository;
 import com.autenticateAPIwithFeingClient.demo.DTO.ProductsDTO;
 import com.autenticateAPIwithFeingClient.demo.DTO.ProductsPostDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -15,5 +16,8 @@ public interface FeingProductsRepository {
 
     @PostMapping(value = "/product/register")
     ProductsPostDTO postProducts(ProductsPostDTO productsPostDTO);
+
+    @GetMapping(value = "/products/pagination")
+    ResponseEntity<Object> getallProductsPage();
 
 }

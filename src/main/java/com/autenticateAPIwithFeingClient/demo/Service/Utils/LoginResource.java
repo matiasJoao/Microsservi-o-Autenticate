@@ -1,58 +1,55 @@
 package com.autenticateAPIwithFeingClient.demo.Service.Utils;
 
-
-import com.autenticateAPIwithFeingClient.demo.UserEntity;
-import feign.Response;
+import com.autenticateAPIwithFeingClient.demo.entity.UserEntity;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
+;
 import java.nio.charset.StandardCharsets;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-/* public class LoginResource {
+import static org.springframework.http.MediaType.*;
+
+@Service
+public class LoginResource {
 
     private final SecretKey CHAVE = Keys.hmacShaKeyFor(
-            "7f-j&CKk=coNzZc0y7_4obMP?#TfcYq%fcD0mDpenW2nc!lfGoZ|d?f&RNbDHUX6"
+            "b638fa08-53aa-45cd-aac3-eb98dc7d80c1"
                     .getBytes(StandardCharsets.UTF_8));
 
-    public ResponseEntity response(UserEntity userEntity){
-
-         try {
-            if (userEntity.getDepart().equals("Cliente")) {
-                String jwToken = Jwts.builder()
-                        .setSubject(userEntity.getEmail())
-                        .setIssuer("localhost:8081")
-                        .setIssuedAt(new Date())
-                        .setExpiration(Date.from(Instant.from(LocalDateTime.now()
-                                .plusMinutes(15L)
-                                .atZone(ZoneId.systemDefault())
-                                .toInstant())))
-                        .signWith(CHAVE, SignatureAlgorithm.RS512)
-                        .compact();
-                return ResponseEntity.status(HttpStatus.OK).body(jwToken);
+    @POST
+    public Response post(UserEntity userEntity){
+            try{
+                if(!userEntity.getEmail().isEmpty()) {
+                    String jwtoke = Jwts.builder().setSubject(userEntity.getEmail())
+                            .setIssuer("localhost:8081")
+                            .setIssuedAt(new Date())
+                            .setExpiration(
+                                    Date.from(
+                                            LocalDateTime.now().plusMinutes(15L)
+                                                    .atZone(
+                                                            ZoneId.systemDefault()
+                                                    ).toInstant()
+                                    )
+                            ).signWith(CHAVE, SignatureAlgorithm.RS256)
+                            .compact();
+                    return Response.status(Response.Status.OK).entity(jwtoke).build();
+                }
+                else {
+                    return Response.status(Response.Status.UNAUTHORIZED).entity("Usuario nao autorizado").build();
+                }
             }
-            else {
-                return ResponseEntity.status(HttpStatus.OK)
+            catch (Exception e){
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity(e.getMessage())
+                        .build();
             }
-        }
-        catch (
-
-        )
-
-
-
     }
-
-
 }
-
-
- */

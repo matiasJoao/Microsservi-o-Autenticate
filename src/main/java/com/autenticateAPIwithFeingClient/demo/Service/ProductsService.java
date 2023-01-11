@@ -3,6 +3,7 @@ package com.autenticateAPIwithFeingClient.demo.Service;
 import com.autenticateAPIwithFeingClient.demo.DTO.ProductsDTO;
 import com.autenticateAPIwithFeingClient.demo.DTO.ProductsPostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.autenticateAPIwithFeingClient.demo.Repository.FeingProductsRepository;
 
@@ -19,5 +20,8 @@ public class ProductsService {
     }
     public ProductsPostDTO postProducts(ProductsPostDTO productsPostDTO){
         return feingRepository.postProducts(productsPostDTO);
+    }
+    public ResponseEntity<Object> getAllProductsPage(){
+        return feingRepository.getallProductsPage();
     }
 }

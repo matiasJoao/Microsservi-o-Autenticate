@@ -4,6 +4,7 @@ import com.autenticateAPIwithFeingClient.demo.DTO.ProductsDTO;
 import com.autenticateAPIwithFeingClient.demo.DTO.ProductsPostDTO;
 import com.autenticateAPIwithFeingClient.demo.Service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class ProductsController {
     @RequestMapping("/productsList")
     public List<ProductsDTO> getAllProducts(){
         return productsService.getAllProducts();
+    }
+    @GetMapping("/product/page")
+    public ResponseEntity<Object> getAllProductsPage(){
+        return productsService.getAllProductsPage();
     }
 
     @PostMapping
