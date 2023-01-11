@@ -1,4 +1,4 @@
-package com.autenticateAPIwithFeingClient.demo.Service.Utils;
+/* package com.autenticateAPIwithFeingClient.demo.Service.Utils;
 
 import com.autenticateAPIwithFeingClient.demo.entity.UserEntity;
 import io.jsonwebtoken.Jwts;
@@ -9,21 +9,17 @@ import org.springframework.stereotype.Service;
 import javax.crypto.SecretKey;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static org.springframework.http.MediaType.*;
 
 @Service
 public class LoginResource {
 
-    private final SecretKey CHAVE = Keys.hmacShaKeyFor(
-            "b638fa08-53aa-45cd-aac3-eb98dc7d80c1"
-                    .getBytes(StandardCharsets.UTF_8));
-
+    private final SecretKey key = Keys.hmacShaKeyFor("lEAnEZSLi8qbVhnHe3Cixkq7Ty2wMs6VVu8pjPZsNfrymC5pwvxTFMQmaGIKXCwGXsV47ImKLB9W42bqoy7R8L49fAH233yOkiIhQVSqmPceHduTzrzy0tv6R2YKUlm4tVb7ERnOwnT2qdJOt8cjpvd7n2F5bSXsDXp5CBJZOsP3uoHLlHUA2YvdO17NHU58Fi38JCVmVyddMKOVfwk7iD8Ws5xZOsXhBQd8hYi0ml3XTHGY3QTckQWCLkqnAdtZ".getBytes(StandardCharsets.UTF_8));
     @POST
     public Response post(UserEntity userEntity){
             try{
@@ -38,13 +34,12 @@ public class LoginResource {
                                                             ZoneId.systemDefault()
                                                     ).toInstant()
                                     )
-                            ).signWith(CHAVE, SignatureAlgorithm.RS512)
+                            ).signWith(SignatureAlgorithm.ES256, key)
                             .compact();
                     return Response.status(Response.Status.OK).entity(jwtoke).build();
                 }
                 else {
                     return Response.status(Response.Status.UNAUTHORIZED).entity("Usuario nao autorizado").build();
-
                 }
             }
             catch (Exception e){
@@ -54,3 +49,6 @@ public class LoginResource {
             }
     }
 }
+
+
+ */
