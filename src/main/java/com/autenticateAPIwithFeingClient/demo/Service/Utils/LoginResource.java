@@ -27,7 +27,7 @@ public class LoginResource {
     @POST
     public Response post(UserEntity userEntity){
             try{
-                if(!userEntity.getEmail().isEmpty()) {
+                if(userEntity.getEmail().equalsIgnoreCase("caba@email.com")) {
                     String jwtoke = Jwts.builder().setSubject(userEntity.getEmail())
                             .setIssuer("localhost:8081")
                             .setIssuedAt(new Date())
@@ -38,12 +38,13 @@ public class LoginResource {
                                                             ZoneId.systemDefault()
                                                     ).toInstant()
                                     )
-                            ).signWith(CHAVE, SignatureAlgorithm.RS256)
+                            ).signWith(CHAVE, SignatureAlgorithm.RS512)
                             .compact();
                     return Response.status(Response.Status.OK).entity(jwtoke).build();
                 }
                 else {
                     return Response.status(Response.Status.UNAUTHORIZED).entity("Usuario nao autorizado").build();
+
                 }
             }
             catch (Exception e){
