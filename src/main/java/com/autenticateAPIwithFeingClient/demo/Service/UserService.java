@@ -19,4 +19,11 @@ public class UserService {
        return  token.generateToken(userDataDTO.getEmail(), userEntity);
     }
 
+    public Boolean validToken(String tkn){
+        return token.tokenValid(tkn);
+    }
+    public String typeUser(String tkn){
+        return token.typeUser(tkn);
+    }
+
 }
