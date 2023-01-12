@@ -20,7 +20,7 @@ public class Token {
                 Map<String, Object> claims = new HashMap<>();
                 claims.put("depart", user.getDepart());
               try {
-                             return Jwts.builder().setIssuer("localhost:8081").setSubject(user.getEmail()).addClaims(claims).setIssuedAt(new Date())
+                             return Jwts.builder().setIssuer("localhost:8081").setSubject(email).addClaims(claims).setIssuedAt(new Date())
                                      .setExpiration(new Date(new Date().getTime() + Long.parseLong("86400000"))).signWith(SignatureAlgorithm.HS256, secret).compact();
               }
               catch (Exception e){
