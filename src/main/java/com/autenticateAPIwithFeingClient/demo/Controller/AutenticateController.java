@@ -2,22 +2,17 @@ package com.autenticateAPIwithFeingClient.demo.Controller;
 
 import com.autenticateAPIwithFeingClient.demo.DTO.TokenDTO;
 import com.autenticateAPIwithFeingClient.demo.DTO.UserDataDTO;
-import com.autenticateAPIwithFeingClient.demo.Repository.FeingUserRepository;
-import com.autenticateAPIwithFeingClient.demo.Service.UserService;
-import org.apache.tomcat.util.http.parser.Authorization;
+import com.autenticateAPIwithFeingClient.demo.Service.AutenticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.List;
-
 @RestController
-public class UserController {
+public class AutenticateController {
     @Autowired
-    private UserService userService;
+    private AutenticateService userService;
 
 
     @GetMapping

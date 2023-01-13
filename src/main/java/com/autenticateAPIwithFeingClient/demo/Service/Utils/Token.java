@@ -22,7 +22,7 @@ public class Token {
         claims.put("depart", userEntity.getDepart());
         try {
             return Jwts.builder().setIssuer("localhost:8081").setSubject(userEntity.getEmail()).addClaims(claims).setIssuedAt(new Date())
-                    .setExpiration(new Date(new Date().getTime() + Long.parseLong("86400000"))).signWith(SignatureAlgorithm.HS256, secret).compact();
+                    .setExpiration(new Date(new Date().getTime() + Long.parseLong("1800000"))).signWith(SignatureAlgorithm.HS256, secret).compact();
         }
         catch (Exception e) {
             return e.getMessage();
