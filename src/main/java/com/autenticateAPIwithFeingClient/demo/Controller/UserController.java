@@ -2,6 +2,7 @@ package com.autenticateAPIwithFeingClient.demo.Controller;
 
 import com.autenticateAPIwithFeingClient.demo.DTO.TokenDTO;
 import com.autenticateAPIwithFeingClient.demo.DTO.UserDataDTO;
+import com.autenticateAPIwithFeingClient.demo.Repository.FeingUserRepository;
 import com.autenticateAPIwithFeingClient.demo.Service.UserService;
 import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,11 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping
-    @RequestMapping("/autentication")
+    @GetMapping
+    @RequestMapping("/login")
     public ResponseEntity getUser(@RequestBody UserDataDTO userDataDTO ){
-       String token = userService.getLoginUser(userDataDTO);
-       TokenDTO tokenDTO = new TokenDTO("Bearer", token);
+        String token = userService.getLoginUser(userDataDTO);
+        TokenDTO tokenDTO = new TokenDTO("Bearer", token);
         return ResponseEntity.status(HttpStatus.OK).body(tokenDTO);
     }
     @GetMapping
